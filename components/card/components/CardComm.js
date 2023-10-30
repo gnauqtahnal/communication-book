@@ -1,15 +1,16 @@
-import React, {
-  forwardRef,
-  memo,
-  useImperativeHandle,
-  useMemo,
-  useState,
-} from 'react'
+import React, { memo, useMemo, useState } from 'react'
 import { StyleSheet } from 'react-native'
 import CardCommContainer from './CardCommContainer'
 import CardImage from './CardImage'
 import CardPressable from './CardPressable'
 import CardText from './CardText'
+
+const CardCommPressable = ({ onPress: onPressProvided, children }) => {
+  if (onPressProvided) {
+    return <CardPressable onPress={onPressProvided}>{children}</CardPressable>
+  }
+  return <>{children}</>
+}
 
 const CardCommComp = ({
   containerStyle: containerStyleProvided,
@@ -18,7 +19,7 @@ const CardCommComp = ({
   imageUri,
   audioUri,
   text,
-  onPress: onPressProvided,
+  onPress: onPressProvided = undefined,
 }) => {
   const [sound, setSound] = useState(undefined)
 
@@ -35,7 +36,7 @@ const CardCommComp = ({
   const textStyle = useMemo(() => [textStyleProvided], [textStyleProvided])
 
   return (
-    <CardPressable onPress={onPressProvided}>
+    <CardCommPressable onPress={onPressProvided}>
       <CardCommContainer containerStyle={containerStyle}>
         <CardImage
           imageStyle={imageStyle}
@@ -47,7 +48,7 @@ const CardCommComp = ({
           text={text}
         />
       </CardCommContainer>
-    </CardPressable>
+    </CardCommPressable>
   )
 }
 
