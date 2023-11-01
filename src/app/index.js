@@ -1,5 +1,4 @@
 import { useRouter } from 'expo-router'
-import { StatusBar } from 'expo-status-bar'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { useState } from 'react'
 import { FlatList, StyleSheet, View } from 'react-native'
@@ -43,13 +42,11 @@ const Home = () => {
               key={item.key}
               onPress={navigateToDetails}
               imageUri={item.imageUri}
-              // text={item.text}
-              text={item.key}
+              text={item.text}
             />
           )
         }}
       />
-      <StatusBar style='dark' />
     </SafeAreaView>
   )
 }

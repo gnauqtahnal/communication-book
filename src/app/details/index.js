@@ -1,11 +1,10 @@
 import * as ImagePicker from 'expo-image-picker'
 import { CardComm } from 'components/card'
-import { FlipType, manipulateAsync, SaveFormat } from 'expo-image-manipulator'
+import { manipulateAsync, SaveFormat } from 'expo-image-manipulator'
 import { useLocalSearchParams } from 'expo-router'
-import { StatusBar } from 'expo-status-bar'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { memo, useState } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import {
   ButtonCamera,
   ButtonImage,
@@ -151,8 +150,6 @@ const Details = () => {
         <ButtonSeparator />
         <ButtonSubmit onPress={() => {}} />
       </View>
-
-      <StatusBar style='dark' />
     </SafeAreaView>
   )
 }
