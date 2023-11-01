@@ -1,5 +1,7 @@
 import { useRouter } from 'expo-router'
-import { useCallback, useState } from 'react'
+import { StatusBar } from 'expo-status-bar'
+import { SafeAreaView } from 'react-native-safe-area-context'
+import { useState } from 'react'
 import { FlatList, StyleSheet, View } from 'react-native'
 import { CardComm } from '../components/card'
 import { keygen } from '../components/keygen'
@@ -21,7 +23,10 @@ const Home = () => {
   ])
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView
+      style={styles.container}
+      edges={['right', 'bottom', 'left']}
+    >
       <FlatList
         data={data}
         renderItem={({ item, index }) => {
@@ -44,7 +49,8 @@ const Home = () => {
           )
         }}
       />
-    </View>
+      <StatusBar style='dark' />
+    </SafeAreaView>
   )
 }
 

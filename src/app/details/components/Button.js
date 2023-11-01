@@ -111,6 +111,30 @@ export const ButtonTrashBin = memo(({ onPress: onPressProvided }) => {
   )
 })
 
+export const ButtonSubmit = memo(
+  ({ containerStyle: containerStyleProvided, onPress: onPressProvided }) => {
+    const containerStyle = useMemo(
+      () => [styles.container, containerStyleProvided],
+      [containerStyleProvided]
+    )
+
+    return (
+      <ButtonPressable onPress={onPressProvided}>
+        <View style={containerStyle}>
+          <View style={[styles.containerIcon, { backgroundColor: 'green' }]}>
+            <Ionicons
+              name='md-checkmark-outline'
+              size={ICON_SIZE}
+              color={ICON_COLOR}
+            />
+          </View>
+          <Text>Xong</Text>
+        </View>
+      </ButtonPressable>
+    )
+  }
+)
+
 const styles = StyleSheet.create({
   container: {
     padding: 5,
